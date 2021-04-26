@@ -1,0 +1,64 @@
+.rowData {
+  display: flex;
+  &__buy {
+    flex: 1;
+    display: flex;
+
+    justify-content: space-around;
+
+    width: 50%;
+    p {
+      position: relative;
+
+      flex: 1;
+
+      width: 100%;
+
+      padding: 5px;
+
+      text-align: center;
+
+      color: #eee;
+
+      &:last-child::after {
+        content: "";
+
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        width: 50%;
+
+        background-color: #aeb1bd;
+        opacity: 0.3;
+      }
+      &:last-child {
+        color: rgb(230, 99, 99);
+      }
+    }
+  }
+  &__sell {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+
+    p {
+      position: relative;
+
+      flex: 1;
+
+      width: 100%;
+
+      padding: 5px;
+
+      text-align: center;
+
+      color: #eee;
+
+      &:first-child {
+        color: #0f0;
+      }
+    }
+  }
+}

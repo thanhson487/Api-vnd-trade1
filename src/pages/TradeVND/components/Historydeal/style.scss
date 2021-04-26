@@ -1,0 +1,74 @@
+.historydeal {
+  background: #2f3240;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  height: 100%;
+
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    list-style: none;
+
+    padding: 4px;
+    border-bottom: 1px solid #3a3a3a;
+
+    font-size: 0.9rem;
+
+    color: #ffff;
+    li {
+      line-height: 20px;
+      p {
+        font-weight: 700;
+        font-size: 16px;
+      }
+      span {
+        font-size: 12.8px;
+      }
+      span:nth-child(1) {
+        font-size: 0.8rem;
+      }
+      .san {
+        color: #00c5c5;
+      }
+      .tran {
+        color: #ff25ff;
+      }
+      .tc {
+        color: #ffd900;
+      }
+    }
+  }
+  &__title-row {
+    display: flex;
+    justify-content: space-around;
+
+    .price {
+      color: #f7941d;
+
+      text-decoration: none;
+      font-size: 12.8px;
+      font-weight: 700;
+
+      padding: 5px 0;
+
+      cursor: pointer;
+    }
+    .historyData {
+      color: #ffffff;
+
+      padding: 5px 0;
+
+      font-size: 12.8px;
+
+      cursor: pointer;
+    }
+  }
+}

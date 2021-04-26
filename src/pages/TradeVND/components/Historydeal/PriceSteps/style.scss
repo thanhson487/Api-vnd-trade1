@@ -1,0 +1,57 @@
+.historydeal__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  background-color: #3a3d48;
+  color: #eee;
+
+  padding: 8px;
+
+  &--buy {
+    display: flex;
+    justify-content: space-around;
+
+    font-size: 0.75rem;
+    text-align: center;
+
+    width: 100%;
+
+    border-right: 1px solid rgb(63, 61, 61);
+  }
+
+  &--sell {
+    display: flex;
+    justify-content: space-around;
+
+    font-size: 0.75rem;
+    text-align: center;
+
+    width: 100%;
+  }
+}
+.historydeal__row--data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 105px;
+
+  height: 100%;
+
+  overflow: auto;
+
+  &--buy--data {
+    font-size: 13px;
+    text-align: center;
+
+    width: 100%;
+
+    border-right: 1px solid rgb(68, 66, 66);
+    border-bottom: 1px solid #444444;
+  }
+}

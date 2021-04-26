@@ -1,0 +1,28 @@
+#datachangeasset {
+  .title-header {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 7px 5px;
+
+    background-color: rgb(58, 61, 72);
+    p {
+      color: #f7941d;
+      font-weight: 700;
+    }
+    .list-icons {
+      display: flex;
+      color: #f7941d;
+    }
+  }
+  .title-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 12.8px;
+
+    padding: 5px;
+    border-bottom: 1px solid rgb(59, 59, 59);
+  }
+}

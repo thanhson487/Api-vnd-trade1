@@ -1,0 +1,25 @@
+.main {
+  display: grid;
+  grid-template-columns: 1fr 398px;
+
+  background: rgb(19, 23, 34);
+
+  height: calc(100vh - 42px);
+
+  &__left {
+    display: grid;
+    grid-template-columns: 1fr 348px;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 2px;
+
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: 1fr 396px;
+    }
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+  }
+}

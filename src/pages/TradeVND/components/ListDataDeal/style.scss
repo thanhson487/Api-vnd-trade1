@@ -1,0 +1,36 @@
+.listDataDeal {
+  display: flex;
+  flex-direction: column;
+  background: #2f3240;
+
+  height: 100%;
+  .wrap1 {
+    height: 90%;
+    .listDataDeal__title {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+
+      padding: 5px;
+
+      color: #ffff;
+      background: #3a3d48;
+
+      font-size: 12.8px;
+      text-align: center;
+    }
+    .listDataDeal__data {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+
+      padding: 5px;
+
+      color: #0f0;
+
+      text-align: center;
+      font-size: 12.8px;
+      .colorffff {
+        color: #ffffff;
+      }
+    }
+  }
+}

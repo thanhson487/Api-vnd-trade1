@@ -1,0 +1,55 @@
+.datachangeMenu {
+  .title-header {
+    display: flex;
+    justify-content: space-around;
+    p {
+      text-align: center;
+      font-size: 12px;
+
+      padding: 5px;
+    }
+    .comeinandDay {
+      color: #f7941d;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+    .openPosition,
+    .closePosition {
+      cursor: pointer;
+    }
+    &__icon {
+      color: #f7941d;
+    }
+  }
+  .closeTaste {
+    display: none;
+  }
+  .title-table {
+    display: flex;
+
+    width: 100%;
+
+    padding: 8px;
+
+    background-color: #3a3d48;
+
+    p {
+      text-align: center;
+      font-weight: 700;
+      &:nth-child(1) {
+        width: 15%;
+      }
+      &:nth-child(2) {
+        width: 20%;
+      }
+      &:nth-child(3) {
+        width: 15%;
+      }
+      &:nth-child(4) {
+        width: 30%;
+      }
+    }
+  }
+}

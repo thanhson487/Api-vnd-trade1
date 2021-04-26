@@ -1,0 +1,33 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 30;
+  width: 396px;
+  @media screen and (max-width: 1024px) {
+    width: 396px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+
+    list-style: none;
+
+    font-size: 0.8rem;
+    background-color: #131722;
+    li {
+      padding: 7px;
+      color: #fff;
+      display: inline-block;
+
+      text-align: center;
+
+      width: 100%;
+    }
+    .checked {
+      background-color: #2f3240;
+      color: #ed8f21;
+    }
+  }
+}

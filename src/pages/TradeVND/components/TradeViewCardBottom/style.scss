@@ -1,0 +1,52 @@
+.testaaa {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .tradingview-widget-container {
+    height: 90%;
+  }
+  .version {
+    width: 100%;
+    height: 10%;
+
+    font-size: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    color: #eee;
+    .clone {
+      width: 50%;
+    }
+    &--vnd {
+      display: flex;
+      align-items: center;
+
+      width: auto;
+      padding: 7px;
+
+      position: fixed;
+      left: 0;
+      bottom: 2;
+      z-index: 20;
+
+      background-color: #131722;
+    }
+    .chart-icon {
+      width: 400px;
+
+      display: flex;
+      justify-content: space-around;
+
+      p {
+        font-size: 12.8px;
+      }
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+}

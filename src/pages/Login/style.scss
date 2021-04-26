@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+  }
+  .container--login {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-image: url(https://static-01.vndirect.com.vn/images/dpro/dpro_login_bg.jpg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 50% 14%, center bottom;
+    background-size: cover;
+    display: block;
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .Login {
+        width: 300px;
+        height: auto;
+        padding: 40px 0;
+        color: #444;
+      
+        img {
+          width: 100%;
+        }
+        &__form {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          padding: 10px 0px 0px 0px;
+          form {
+            margin-top: 15px;
+            width: 100%;
+          }
+          margin-top: 30px;
+          width: 100%;
+          background-color: #e9e8ea;
+          &__title {
+            color: #444;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 22px;
+            margin-top: 16px;
+            padding: 0;
+            quotes: auto;
+            text-align: center;
+          }
+        }
+        form {
+          width: 100%;
+          padding: 10px 40px;
+          display: flex;
+          flex-direction: column;
+      
+          .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+      
+            margin-top: 10px;
+      
+            input {
+              width: 100%;
+      
+              padding: 5px;
+              margin-top: 5px;
+      
+              border-radius: 5px;
+              border: 1px solid #ccc;
+      
+              &:focus {
+                border: 1px solid orange;
+                outline: none;
+              }
+            }
+            &__title {
+              padding-left: 10px;
+              color: rgb(90, 90, 90);
+            }
+            &:first-child {
+              margin-top: 0px;
+            }
+          }
+          .form-group--row-magin-bottom {
+            flex-direction: row;
+      
+            input {
+              width: auto;
+              outline: none;
+            }
+            margin-bottom: 20px;
+          }
+          .form-group--center {
+            align-items: center;
+            margin-top: 0px;
+            margin-bottom: 20px;
+            .btn-action {
+              width: 100%;
+              text-align: center;
+              padding: 8px;
+              color: #ffffff;
+              font-weight: 700px;
+              border-radius: 3px;
+              border: none;
+              font-size: 1rem;
+            }
+            .btn--orange {
+              background-color: #f7941d;
+            }
+            .btn--green {
+              background-color: #18c451;
+            }
+          }
+        }
+        .helper {
+          width: 100%;
+          text-align: center;
+          background-color: #e9e8ea;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          padding-bottom: 20px;
+          .test {
+            margin-top: 20px;
+            width: 70%;
+
+            display: inline-flex;
+            
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            .btn-action {
+                text-align: center;
+              width: 100%;
+              padding: 8px;
+              color: #ffffff;
+              font-weight: 700px;
+              border-radius: 3px;
+              border: none;
+              font-size: 1rem;
+             
+            }
+            .btn--green {
+              background-color: #18c451;
+              margin-top: 10px;
+            }
+            .help {
+              font-size: 1rem;
+              padding: 20px 0px;
+              text-decoration: none;
+              color: rgb(14, 13, 13);
+              &:hover {
+                color: #f7941d;
+              }
+            }
+          }
+        }
+      }
+  }
+  
+  
