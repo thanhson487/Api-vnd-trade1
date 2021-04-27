@@ -1,12 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import tradeApi from "../../../../../apis/tradeApi";
 import "./style.scss";
 function OrderBook(props) {
   const [openView, setopenView] = useState(1);
+  const [comeinandDayData, setComeinandDayData] = useState([]);
 
   const handleClick = (value) => {
     setopenView(value);
   };
 
+  useEffect(() => {
+    async function fetchData() {
+      let res = await tradeApi.fetchOrderBookDay();
+      setComeinandDayData(res);
+    }
+    fetchData();
+  }, []);
+
+  const renderConditionalOrder = () => {
+    let xhtml = [];
+    xhtml = comeinandDayData.map((item, index) => {
+      const { cancelable, symbol, price, quantity, orderType, status } = item;
+      return (
+        <div className="data-show__detail" key={index}>
+          <p>{cancelable ? "Mua" : "Bán"}</p>
+          <p>{symbol}</p>
+          <p>
+            <span>{price}/</span>
+            {quantity}
+          </p>
+          <p>{orderType}</p>
+          <p>
+            <i className="fa fa-minus-circle"></i>
+            {status}
+          </p>
+        </div>
+      );
+    });
+    return xhtml;
+  };
   return (
     <div className="datachangeorderBook">
       <div className="title-header">
@@ -41,13 +73,17 @@ function OrderBook(props) {
       </div>
 
       {openView === 1 ? (
-        <div className="title-table conditionalOrder-day">
-          <p>Lệnh</p>
-          <p>Mã</p>
-          <p>KL Khớp</p>
-          <p>Giá</p>
-          <p>TT</p>
-        </div>
+        <>
+          <div className="title-table conditionalOrder-day">
+            <p>Lệnh</p>
+            <p>Mã</p>
+            <p>KL Khớp</p>
+            <p>Giá</p>
+            <p>TT</p>
+          </div>
+
+          <div className="data-show">{renderConditionalOrder()}</div>
+        </>
       ) : openView === 2 ? (
         <div className="title-table conditionalOrder-menu">
           <p>Lệnh</p>
@@ -61,31 +97,6 @@ function OrderBook(props) {
       ) : (
         ""
       )}
-
-      <div className="data-show">
-        <div className="data-show__detail">
-          <p>Mua</p>
-          <p>VN30F2104</p>
-          <p>
-            <span>0/</span>21
-          </p>
-          <p>1,111.0</p>
-          <p>
-            <i className="fa fa-minus-circle"></i>
-          </p>
-        </div>
-        <div className="data-show__detail">
-          <p>Mua</p>
-          <p>VN30F2104</p>
-          <p>
-            <span>0/</span>21
-          </p>
-          <p>1,111.0</p>
-          <p>
-            <i className="fa fa-minus-circle"></i>
-          </p>
-        </div>
-      </div>
     </div>
   );
 }

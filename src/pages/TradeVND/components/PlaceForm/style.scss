@@ -1,6 +1,6 @@
 .data2 {
   background: rgb(47, 50, 64);
-
+  padding-bottom: 40px;
   padding-left: 15px;
   padding-right: 15px;
   margin: 1px;
@@ -66,6 +66,8 @@
         font-weight: 700;
 
         color: rgb(255, 255, 255);
+
+        cursor: pointer;
       }
       .button--green {
         background: green;

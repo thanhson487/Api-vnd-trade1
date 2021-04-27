@@ -33,4 +33,11 @@
       }
     }
   }
+  .containerShowData {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }

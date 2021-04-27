@@ -1,13 +1,15 @@
 import React from "react";
 import "./style.scss";
-function ShowData(props) {
+function ShowData({ code, price, change, pctChange, nmVolume }) {
+  let data = (parseFloat(pctChange) * 100).toFixed(2);
+
   return (
     <div className="listDataDeal__data">
-      <p>VN30F2104</p>
-      <p>1,183</p>
-      <p>10.0</p>
-      <p>2.93</p>
-      <p className="colorffff">166,644</p>
+      <p>{code}</p>
+      <p>{price}</p>
+      <p>{change}</p>
+      <p>{data}</p>
+      <p className="colorffff">{nmVolume}</p>
     </div>
   );
 }
