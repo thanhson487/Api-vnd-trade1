@@ -1,6 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { submitForm } from "../../../TradeVND/redux/action";
 function PlaceForm(props) {
+  const token = localStorage.getItem("tokenUser");
+  let dataUser = jwt_decode(token);
+  let userName = dataUser.username;
+
+  const dispatch = useDispatch();
+
+  const [dataForm, setDataForm] = useState({
+    symbol: "VN30F2105",
+    userName: userName,
+    price: 0,
+    quantity: "",
+    priceType: "MPL",
+    side: "",
+  });
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setDataForm({
+      ...dataForm,
+      [name]: value,
+    });
+  };
+  const onSubmit = (param) => {
+    const data = {
+      symbol: dataForm.symbol,
+      userName: dataForm.userName,
+      price: dataForm.price,
+      quantity: parseInt(dataForm.quantity),
+      priceType: "MPL",
+      side: param,
+    };
+
+    dispatch(submitForm(data));
+  };
   return (
     <div className="data2">
       <div className="select-check">
@@ -28,28 +65,54 @@ function PlaceForm(props) {
           <label htmlFor className="label-title">
             Mã HĐTL
           </label>
-          <select name="cars" id="cars" className="input-value">
-            <option value="volvo">VND49F2016</option>
-            <option value="volvo">VND49F2016</option>
-            <option value="volvo">VND49F2016</option>
-            <option value="volvo">VND49F2016</option>
+          <select
+            name="symbol"
+            id="cars"
+            className="input-value"
+            onChange={handleOnChange}
+            value={dataForm.symbol}
+          >
+            <option value="VN30F2105">VN30F2105</option>
+            <option value="VN30F2105">VN30F2105</option>
+            <option value="VN30F2105">VN30F2105</option>
           </select>
         </div>
         <div className="form-group">
           <label htmlFor className="label-title">
             Giá đặt
           </label>
-          <input type="number" placeholder="Giá" className="input-value" />
+          <input
+            name="priceType"
+            value={dataForm.priceType}
+            type="number"
+            placeholder="Giá"
+            className="input-value"
+            onChange={handleOnChange}
+          />
         </div>
         <div className="form-group">
           <label htmlFor className="label-title">
             Khối lượng
           </label>
-          <input type="number" placeholder="KL" className="input-value" />
+          <input
+            name="quantity"
+            type="number"
+            value={dataForm.quantity}
+            placeholder="KL"
+            className="input-value"
+            onChange={handleOnChange}
+          />
         </div>
         <div className="form-group form-group--flexend">
-          <button className="button button--green">Mua</button>
-          <button className="button button--red">Bán</button>
+          <button
+            className="button button--green"
+            onClick={() => onSubmit("NB")}
+          >
+            Mua
+          </button>
+          <button className="button button--red" onClick={() => onSubmit("NS")}>
+            Bán
+          </button>
           <div className="saveCommand">
             <input type="checkbox" id="saveCommand" />
             <label htmlFor="saveCommand">lưu lệnh</label>

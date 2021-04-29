@@ -16,3 +16,20 @@ export const fetchDataDealFalse = (data) => {
     payload: data,
   };
 };
+export const submitForm = (data) => {
+  return {
+    type: types.SUBMIT_FORM,
+    payload: data,
+  };
+};
+export const submitFormSuccess = (data) => {
+  return {
+    type: types.SUBMIT_FORM_SUCCESS,
+    payload: data,
+  };
+};
+export const submitFormFalse = () => {
+  return {
+    type: types.SUBMIT_FORM_FALSE,
+  };
+};

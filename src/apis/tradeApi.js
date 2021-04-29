@@ -3,7 +3,6 @@ import axiosClient from "./axiosClientTrade";
 import jwt_decode from "jwt-decode";
 const token = localStorage.getItem("tokenUser");
 let dataUser = jwt_decode(token);
-console.log(dataUser);
 
 class TradeApi {
   fetchDataDeal = () => {
@@ -14,6 +13,10 @@ class TradeApi {
     let { username } = dataUser;
     const url = `https://dertrial-api.vndirect.com.vn/demotrade/orders?username=${username}`;
     return axiosClient.get(url);
+  };
+  postDataForm = (data) => {
+    const url = "https://dertrial-api.vndirect.com.vn/demotrade/orders";
+    return axiosClient.post(url, data);
   };
 }
 const tradeApi = new TradeApi();

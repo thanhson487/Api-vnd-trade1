@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import tradeApi from "../../../../../apis/tradeApi";
 import "./style.scss";
+import useSWR from "swr";
+import jwt_decode from "jwt-decode";
+
 function OrderBook(props) {
+  const token = localStorage.getItem("tokenUser");
+  let dataUser = jwt_decode(token);
+  let { username } = dataUser;
+  const url = `https://dertrial-api.vndirect.com.vn/demotrade/orders?username=${username}`;
   const [openView, setopenView] = useState(1);
   const [comeinandDayData, setComeinandDayData] = useState([]);
 
@@ -9,34 +16,47 @@ function OrderBook(props) {
     setopenView(value);
   };
 
-  useEffect(() => {
-    async function fetchData() {
-      let res = await tradeApi.fetchOrderBookDay();
-      setComeinandDayData(res);
-    }
-    fetchData();
-  }, []);
+  async function fetchData() {
+    let res = await tradeApi.fetchOrderBookDay();
+    setComeinandDayData(res);
+    return res;
+  }
+  const { data: res } = useSWR(url, fetchData, { refreshInterval: 2000 });
 
   const renderConditionalOrder = () => {
     let xhtml = [];
+
     xhtml = comeinandDayData.map((item, index) => {
-      const { cancelable, symbol, price, quantity, orderType, status } = item;
+      const {
+        cancelable,
+        symbol,
+        matchedQuantity,
+        quantity,
+        orderType,
+        status,
+      } = item;
       return (
         <div className="data-show__detail" key={index}>
           <p>{cancelable ? "Mua" : "Bán"}</p>
           <p>{symbol}</p>
           <p>
-            <span>{price}/</span>
+            <span>{matchedQuantity}/</span>
             {quantity}
           </p>
           <p>{orderType}</p>
           <p>
-            <i className="fa fa-minus-circle"></i>
-            {status}
+            {status === "Rejected" ? (
+              <i className="fa fa-minus-circle"></i>
+            ) : status === "New" ? (
+              <i className="fa fa-hourglass-start" aria-hidden="true"></i>
+            ) : (
+              ""
+            )}
           </p>
         </div>
       );
     });
+
     return xhtml;
   };
   return (

@@ -8,4 +8,10 @@
   line-height: 21.3333px;
 
   margin: 1px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  overflow-y: auto;
+  overflow-x: hidden;
 }

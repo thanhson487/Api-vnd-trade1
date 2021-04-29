@@ -12,9 +12,11 @@ function ListDataDeal(props) {
   useEffect(() => {
     dispatch(fetchDataDeal());
   }, [dispatch]);
+
   useEffect(() => {
     setDataDeal(dataDealRedux);
   }, [dataDealRedux]);
+
   const getData = () => {
     let xhtml = [];
     if (dataDeal) {
