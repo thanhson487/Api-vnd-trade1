@@ -1,5 +1,5 @@
 import React from "react";
-import OpenPosititonItems from "./OpenPositionItems/index";
+import OpenPosititonItems from "../OpenPositionItems";
 
 function OpenPosition(props) {
   return (

@@ -2,7 +2,10 @@
 import axiosClient from "./axiosClientTrade";
 import jwt_decode from "jwt-decode";
 const token = localStorage.getItem("tokenUser");
-let dataUser = jwt_decode(token);
+let dataUser = {};
+if (token) {
+  dataUser = jwt_decode(token);
+}
 
 class TradeApi {
   fetchDataDeal = () => {

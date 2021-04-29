@@ -1,5 +1,5 @@
 import React from "react";
-import ClosePositionItems from "./ClosePositionItems";
+import ClosePositionItems from "../ClosePositionItems";
 
 function ClosePosition(props) {
   return (

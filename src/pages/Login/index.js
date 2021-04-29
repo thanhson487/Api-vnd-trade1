@@ -11,14 +11,12 @@ function Login() {
   const dispatch = useDispatch();
   let history = useHistory();
 
-  let token = useSelector((state) => state.Login.token);
-
   useEffect(() => {
     const tokenLocal = localStorage.getItem("tokenUser");
     if (tokenLocal) {
       history.push("/tradeVND");
     }
-  }, [history, token]);
+  }, [history]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -31,6 +29,10 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(submitLogin(values));
+    const tokenLocal = localStorage.getItem("tokenUser");
+    if (tokenLocal) {
+      history.push("/tradeVND");
+    }
   };
 
   return (

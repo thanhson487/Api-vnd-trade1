@@ -5,7 +5,12 @@ import { useDispatch } from "react-redux";
 import { submitForm } from "../../../TradeVND/redux/action";
 function PlaceForm(props) {
   const token = localStorage.getItem("tokenUser");
-  let dataUser = jwt_decode(token);
+
+  let dataUser = {};
+  if (token) {
+    dataUser = jwt_decode(token);
+  }
+
   let userName = dataUser.username;
 
   const dispatch = useDispatch();

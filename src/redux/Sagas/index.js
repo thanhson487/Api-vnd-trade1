@@ -3,7 +3,7 @@ import apiLogin from "../../apis/apiLogin";
 import tradeApi from "../../apis/tradeApi";
 import * as actionsLogin from "../../constants/login";
 import * as actionsDataDeal from "../../constants/dataDeal";
-import { loginFalse, loginSuccess } from "../../pages/Login/redux/actions";
+import { loginSuccess } from "../../pages/Login/redux/actions";
 import { toast } from "react-toastify";
 import {
   fetchDataDealFalse,
@@ -15,7 +15,15 @@ function* submitLogin({ payload }) {
     const res = yield call(apiLogin.fetchUser, payload);
     yield put(loginSuccess(res.token));
   } catch {
-    yield put(loginFalse());
+    toast.error("Tài khoản hoặc mật khẩu chưa đúng", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 }
 function* fetchDataDeal() {

@@ -4,8 +4,14 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 function Header(props) {
   const token = localStorage.getItem("tokenUser");
-  let dataUser = jwt_decode(token);
-  let userName = dataUser.username;
+  let userName = "";
+  if (token) {
+    let dataUser = jwt_decode(token);
+    userName = dataUser.username;
+  } else {
+    userName = "";
+  }
+
   let history = useHistory();
   const handleLogout = () => {
     localStorage.removeItem("tokenUser");
