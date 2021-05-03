@@ -1,5 +1,5 @@
 // api/productApi.js
-import axiosClientLogin from "./axiosClientLogin";
+import axiosClientLogin from "../services/axiosClientLogin";
 
 class ApiLogin {
   fetchUser = (params) => {

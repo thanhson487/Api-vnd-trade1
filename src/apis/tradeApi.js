@@ -1,5 +1,5 @@
 // api/productApi.js
-import axiosClient from "./axiosClientTrade";
+import axiosClient from "../services/axiosClientTrade";
 import jwt_decode from "jwt-decode";
 const token = localStorage.getItem("tokenUser");
 let dataUser = {};

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.scss";
 import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
-import { submitForm } from "../../../TradeVND/redux/action";
+import { fetchDataOrderBook, submitForm } from "../../../TradeVND/redux/action";
 function PlaceForm(props) {
   const token = localStorage.getItem("tokenUser");
 
@@ -40,8 +40,8 @@ function PlaceForm(props) {
       priceType: "MPL",
       side: param,
     };
-
     dispatch(submitForm(data));
+    dispatch(fetchDataOrderBook());
   };
   return (
     <div className="data2">

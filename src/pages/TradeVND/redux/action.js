@@ -1,4 +1,4 @@
-import * as types from "../../../constants/dataDeal";
+import * as types from "../../../constants/Action";
 export const fetchDataDeal = () => {
   return {
     type: types.FETCH_DATA_DEAL,
@@ -31,5 +31,27 @@ export const submitFormSuccess = (data) => {
 export const submitFormFalse = () => {
   return {
     type: types.SUBMIT_FORM_FALSE,
+  };
+};
+export const fetchDataOrderBook = () => {
+  return {
+    type: types.FETCH_DATA_ORDER_BOOK,
+  };
+};
+export const fetchDataOrderBookSuccess = (data) => {
+  return {
+    type: types.FETCH_DATA_ORDER_BOOK_SUCCESS,
+    payload: data,
+  };
+};
+export const fetchDataOrderBookFalse = () => {
+  return {
+    type: types.FETCH_DATA_ORDER_BOOK_FALSE,
+  };
+};
+export const addDataOrderBook = (data) => {
+  return {
+    types: types.ADD_DATA_ORDER_BOOK,
+    payload: data,
   };
 };

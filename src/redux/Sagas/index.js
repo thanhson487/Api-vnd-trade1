@@ -1,13 +1,14 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import apiLogin from "../../apis/apiLogin";
 import tradeApi from "../../apis/tradeApi";
+import { toastError } from "../../common/Toast";
+import * as actionsDataDeal from "../../constants/Action";
 import * as actionsLogin from "../../constants/login";
-import * as actionsDataDeal from "../../constants/dataDeal";
 import { loginSuccess } from "../../pages/Login/redux/actions";
-import { toast } from "react-toastify";
 import {
   fetchDataDealFalse,
   fetchDataDealSuccess,
+  fetchDataOrderBookSuccess
 } from "../../pages/TradeVND/redux/action";
 
 function* submitLogin({ payload }) {
@@ -15,15 +16,7 @@ function* submitLogin({ payload }) {
     const res = yield call(apiLogin.fetchUser, payload);
     yield put(loginSuccess(res.token));
   } catch {
-    toast.error("Tài khoản hoặc mật khẩu chưa đúng", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toastError();
   }
 }
 function* fetchDataDeal() {
@@ -36,22 +29,23 @@ function* fetchDataDeal() {
 }
 function* submitForm({ payload }) {
   try {
-    const res = yield call(tradeApi.postDataForm, payload);
+    yield call(tradeApi.postDataForm, payload);
   } catch {
-    toast.error("Lệnh đặt không thành công", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toastError();
+  }
+}
+function* fetchDataOrderBook() {
+  try {
+    const res = yield call(tradeApi.fetchOrderBookDay);
+    yield put(fetchDataOrderBookSuccess(res));
+  } catch {
+    toastError();
   }
 }
 function* rootSaga() {
   yield takeLatest(actionsLogin.SUBMIT_LOGIN, submitLogin);
   yield takeLatest(actionsDataDeal.FETCH_DATA_DEAL, fetchDataDeal);
   yield takeLatest(actionsDataDeal.SUBMIT_FORM, submitForm);
+  yield takeLatest(actionsDataDeal.FETCH_DATA_ORDER_BOOK, fetchDataOrderBook);
 }
 export default rootSaga;

@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
-import tradeApi from "../../../../../apis/tradeApi";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDataOrderBook } from "../../../redux/action";
 import "./style.scss";
-import useSWR from "swr";
-import jwt_decode from "jwt-decode";
 
 function OrderBook(props) {
-  const token = localStorage.getItem("tokenUser");
-  let dataUser = jwt_decode(token);
-  let { username } = dataUser;
-  const url = `https://dertrial-api.vndirect.com.vn/demotrade/orders?username=${username}`;
   const [openView, setopenView] = useState(1);
   const [comeinandDayData, setComeinandDayData] = useState([]);
+  const dispatch = useDispatch();
+  const comeinandDayData1 = useSelector(
+    (state) => state.DataTrade.comeinandDayData
+  );
 
   const handleClick = (value) => {
     setopenView(value);
   };
 
-  async function fetchData() {
-    let res = await tradeApi.fetchOrderBookDay();
-    setComeinandDayData(res);
-    return res;
-  }
-  const { data: res } = useSWR(url, fetchData, { refreshInterval: 2000 });
+  useEffect(() => {
+    dispatch(fetchDataOrderBook());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setComeinandDayData(comeinandDayData1);
+  }, [comeinandDayData1]);
 
   const renderConditionalOrder = () => {
     let xhtml = [];
@@ -59,6 +59,7 @@ function OrderBook(props) {
 
     return xhtml;
   };
+
   return (
     <div className="datachangeorderBook">
       <div className="title-header">
